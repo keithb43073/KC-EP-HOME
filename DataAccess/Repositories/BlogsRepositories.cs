@@ -8,18 +8,18 @@ using System.Text;
 
 namespace Data.Repositories
 {
-
-    //role:
-    //connecting with the db
-    //executing one operation at a time
+    // Role: Connecting with the db executing one operation at a time
     public class BlogsRepositories : IBlogsRepository
     {
         private BloggingContext context;
-
         public BlogsRepositories(BloggingContext _context)
         {
             context = _context;
         }
+
+
+
+        // Methods
         public void AddBlog(Blog b)
         {
             context.Blogs.Add(b);
