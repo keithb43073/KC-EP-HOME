@@ -15,6 +15,9 @@ namespace Application.Services
         {
             blogsRepo = _blogsRepo;
         }
+
+
+
         public void AddBlog(AddBlogViewModel model)
         {
             blogsRepo.AddBlog(
@@ -28,7 +31,6 @@ namespace Application.Services
                 });
 
         }
-
         public void DeleteBlog(int id)
         {
             var blog = blogsRepo.GetBlog(id);
@@ -39,7 +41,6 @@ namespace Application.Services
                 blogsRepo.DeleteBlog(blog);
             }
         }
-
         public BlogViewModel GetBlog(int id)
         {
             var blog = blogsRepo.GetBlog(id);
@@ -53,7 +54,6 @@ namespace Application.Services
             };
             return result;
         }
-
         public IQueryable<BlogViewModel> GetBlogs()
         {
             //all this will be changed into 1 line with the introduction of AutoMapper
@@ -69,7 +69,6 @@ namespace Application.Services
                        };
             return list;
         }
-
         public void UpdateBlog(AddBlogViewModel editedDetails, int id)
         {
             var originalBlog = blogsRepo.GetBlog(id);

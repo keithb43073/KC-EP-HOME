@@ -16,9 +16,9 @@ namespace Presentation.Controllers
         private IBlogsService blogsService;
         private ICategoriesService categoriesService;
         private IWebHostEnvironment hostEnv;
-        public BlogsController(IBlogsService _blogsService, ICategoriesService _categoriesService,
-            IWebHostEnvironment _hostEnv)
-        { blogsService = _blogsService;
+        public BlogsController(IBlogsService _blogsService, ICategoriesService _categoriesService, IWebHostEnvironment _hostEnv)
+        {
+            blogsService = _blogsService;
             categoriesService = _categoriesService;
             hostEnv = _hostEnv;
         }
@@ -26,18 +26,17 @@ namespace Presentation.Controllers
         public IActionResult Index()
         {
             var list = blogsService.GetBlogs();
-            
             return View(list);
         }
 
-        //this is going to load the page; this runs before the page is rendered
+
+        // This is going to load the page; this runs before the page is rendered
         [HttpGet]
         public IActionResult Create ()
         {
             ViewBag.Categories = categoriesService.GetCategories();
             return View();
         }
-           
         [HttpPost]
         public IActionResult Create(AddBlogViewModel model, IFormFile logoFile)
         {
@@ -84,12 +83,12 @@ namespace Presentation.Controllers
         }
 
 
+
         public IActionResult Details(int id)
         {
             var blog = blogsService.GetBlog(id);
             return View(blog);
         }
-
         public IActionResult Delete(int id)
         {
             try
@@ -112,13 +111,13 @@ namespace Presentation.Controllers
         }
 
 
+
         [HttpGet]
         public IActionResult Update(int id)
         {
             var blogToBeEdited= blogsService.GetBlog(id);
             return View(blogToBeEdited); 
         }
-
         public IActionResult Update(BlogViewModel model, IFormFile logoFile)
         {
             try
