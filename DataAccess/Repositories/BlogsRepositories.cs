@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Data.Repositories
 {
-    // Role: Connecting with the db executing one operation at a time
+    // Role: Connecting with the database, executing one operation at a time
     public class BlogsRepositories : IBlogsRepository
     {
         private BloggingContext context;

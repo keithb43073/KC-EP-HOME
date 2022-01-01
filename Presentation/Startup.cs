@@ -50,12 +50,11 @@ namespace Presentation
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            //these lines of code will inform the injector class what implementation to instantiate
-            //for the requested interface
+            // These lines of code will inform the injector class what implementation to instantiate for the requested interface
 
-            //AddScoped > 1 instance per request
-             //         > e.g. user opens the Index method and the index method makes two calls for the same repository
-             //                class. result: 1 instance of the repository class is created
+            // AddScoped > 1 instance per request
+            //           > E.g. User opens the Index method and the index method makes two calls for the same repository class.
+            //                  Result: 1 instance of the repository class is created
 
             services.AddScoped<IBlogsService, BlogsService>();
             services.AddScoped<IBlogsRepository, BlogsRepositories>();
@@ -63,6 +62,8 @@ namespace Presentation
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<ICategoriesRepository, CategoriesRepository>();
 
+            services.AddScoped<IFileTransferService, FileTransferService>();
+            services.AddScoped<IFileTransferRepository, FileTransferRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,6 +8,7 @@ namespace Domain.Interfaces
 {
     public interface IBlogsRepository
     {
+        // To implement Methods
         public IQueryable<Blog> GetBlogs();
         public Blog GetBlog(int id);
         public void AddBlog(Blog b);

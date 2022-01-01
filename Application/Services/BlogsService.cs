@@ -18,6 +18,7 @@ namespace Application.Services
 
 
 
+        // Methods
         public void AddBlog(AddBlogViewModel model)
         {
             blogsRepo.AddBlog(
