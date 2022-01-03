@@ -2,7 +2,7 @@
 
 namespace Data.Migrations.FileTransfer
 {
-    public partial class FileTransferMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,8 @@ namespace Data.Migrations.FileTransfer
                     Reciever = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Message = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(nullable: true),
+                    FileUploadURL = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

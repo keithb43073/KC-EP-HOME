@@ -49,7 +49,7 @@ namespace Presentation.Controllers
                         fs.Close();
                     }
 
-                    //fileTransferService.CreateFileTransfer
+                    fileTransferService.CreateFileTransfer(model);
                     ViewBag.Message = "File has been uploaded successfully! :D";
                 }
             }

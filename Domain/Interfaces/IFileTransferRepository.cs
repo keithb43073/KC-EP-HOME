@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,8 +8,6 @@ namespace Domain.Interfaces
     public interface IFileTransferRepository
     {
         // To implement Methods
-
-
-
+        void CreateFileTransfer(FileTransfer fileTransfer);
     }
 }

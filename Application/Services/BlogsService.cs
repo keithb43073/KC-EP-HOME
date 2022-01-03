@@ -30,7 +30,6 @@ namespace Application.Services
                      DateCreated = DateTime.Now,
                      DateUpdated = DateTime.Now
                 });
-
         }
         public void DeleteBlog(int id)
         {

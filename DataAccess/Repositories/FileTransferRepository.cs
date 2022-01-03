@@ -1,5 +1,6 @@
 ﻿using Data.Context;
 using Domain.Interfaces;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,8 +18,10 @@ namespace Data.Repositories
 
 
         // Methods
-
-
-
+        public void CreateFileTransfer(FileTransfer fileTransfer)
+        {
+            context.FileTransfer.Add(fileTransfer);
+            context.SaveChanges();
+        }
     }
 }
