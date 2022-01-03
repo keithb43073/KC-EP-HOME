@@ -27,8 +27,4 @@
     <ProjectReference Include="..\DataAccess\Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\Files\" />
-  </ItemGroup>
-
 </Project>

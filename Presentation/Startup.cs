@@ -37,10 +37,6 @@ namespace Presentation
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<BloggingContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -55,12 +51,6 @@ namespace Presentation
             // AddScoped > 1 instance per request
             //           > E.g. User opens the Index method and the index method makes two calls for the same repository class.
             //                  Result: 1 instance of the repository class is created
-
-            services.AddScoped<IBlogsService, BlogsService>();
-            services.AddScoped<IBlogsRepository, BlogsRepositories>();
-
-            services.AddScoped<ICategoriesService, CategoriesService>();
-            services.AddScoped<ICategoriesRepository, CategoriesRepository>();
 
             services.AddScoped<IFileTransferService, FileTransferService>();
             services.AddScoped<IFileTransferRepository, FileTransferRepository>();
