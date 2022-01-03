@@ -3,6 +3,8 @@ using Application.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RestSharp;
+using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,6 +52,7 @@ namespace Presentation.Controllers
                     }
 
                     fileTransferService.CreateFileTransfer(model);
+                    IRestResponse irr = SendSimpleMessage();
                     ViewBag.Message = "File has been uploaded successfully! :D";
                 }
             }
@@ -58,9 +61,27 @@ namespace Presentation.Controllers
                 ViewBag.Error = "File was not uploaded successfully...";
             }
 
-
             return View();
         }
 
+
+
+        public static IRestResponse SendSimpleMessage()
+        {
+            RestClient client = new RestClient();
+            client.BaseUrl = new Uri("https://api.mailgun.net/v3");
+
+            client.Authenticator = new HttpBasicAuthenticator("api", "ab598f3e1d0ef34a5d18758c3608c489-0be3b63b-8e180a03");
+
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain", "sandbox20ae1a06d288434d8468343b2754247f.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "Excited User <mailgun@sandbox20ae1a06d288434d8468343b2754247f.mailgun.org>");
+            request.AddParameter("to", "keithcami43@gmail.com");
+            request.AddParameter("subject", "Find your file now!");
+            request.AddParameter("text", "Email sent by mailgun, ez game!");
+            request.Method = Method.POST;
+            return client.Execute(request);
+        }
     }
 }
